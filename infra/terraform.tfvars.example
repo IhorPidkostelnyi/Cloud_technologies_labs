@@ -1,0 +1,6 @@
+region                = "eu-north-1"
+project_name          = "cloud-lab1-ihor"
+github_repository     = "IhorPidkostelnyi/Cloud_technologies_labs"
+github_owner_id       = "182145211"
+github_repository_id  = "1424722125"
+enable_github_actions = false

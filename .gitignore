@@ -19,3 +19,5 @@ task-definition*.json
 *.key
 credentials.csv
 .DS_Store
+
+loadtest/results/

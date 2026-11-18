@@ -31,3 +31,13 @@ output "app_security_group_id" {
 output "target_group_arn" {
   value = aws_lb_target_group.app.arn
 }
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.lab2.dashboard_name
+}
+output "load_alarm_name" {
+  value = aws_cloudwatch_metric_alarm.maximum_tasks.alarm_name
+}
+output "load_sns_topic_arn" {
+  value = aws_sns_topic.load.arn
+}

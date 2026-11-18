@@ -5,6 +5,11 @@ resource "aws_cloudwatch_log_group" "app" {
 
 resource "aws_ecs_cluster" "main" {
   name = "${var.project_name}-cluster"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
 resource "aws_ecs_task_definition" "app" {
@@ -30,7 +35,8 @@ resource "aws_ecs_task_definition" "app" {
       { name = "DB_PORT", value = "5432" },
       { name = "DB_NAME", value = aws_db_instance.main.db_name },
       { name = "DB_USER", value = "libraryadmin" },
-      { name = "DB_SSLMODE", value = "require" }
+      { name = "DB_SSLMODE", value = "require" },
+      { name = "BOOKS_CACHE_ENABLED", value = tostring(var.books_cache_enabled) }
     ]
     secrets = [{ name = "DB_PASSWORD", valueFrom = aws_ssm_parameter.db_password.arn }]
     logConfiguration = {
@@ -49,13 +55,13 @@ resource "aws_ecs_service" "app" {
   name                               = "${var.project_name}-service"
   cluster                            = aws_ecs_cluster.main.id
   task_definition                    = aws_ecs_task_definition.app.arn
-  desired_count                      = 1
+  desired_count                      = local.minimum_tasks
   launch_type                        = "FARGATE"
   platform_version                   = "1.4.0"
   wait_for_steady_state              = true
   health_check_grace_period_seconds  = 180
-  deployment_minimum_healthy_percent = 100
-  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 0
+  deployment_maximum_percent         = 100
 
   deployment_circuit_breaker {
     enable   = true
@@ -72,7 +78,7 @@ resource "aws_ecs_service" "app" {
     container_port   = 8000
   }
   lifecycle {
-    ignore_changes = [task_definition]
+    ignore_changes = [desired_count]
   }
   depends_on = [
     aws_lb_listener.http,

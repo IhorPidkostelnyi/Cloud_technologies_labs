@@ -1,0 +1,17 @@
+{
+  "mode": "on",
+  "vus": 1,
+  "profile": "smoke",
+  "elapsed_s": 1.172,
+  "requests": 30,
+  "requests_per_second": 25.59726962457338,
+  "error_percent": 0,
+  "p50_ms": 3.9853,
+  "p95_ms": 16.03415499999998,
+  "p99_ms": 21.901624,
+  "books_list_p95_ms": 7.748539999999998,
+  "books_list_requests": 15,
+  "books_list_sql_selects": 6,
+  "books_list_sql_selects_per_second": 5.119453924914676,
+  "books_list_hit_percent": 60
+}

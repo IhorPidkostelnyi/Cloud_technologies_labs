@@ -8,6 +8,7 @@ from sqlalchemy import select, text
 from sqlalchemy.exc import OperationalError, SQLAlchemyError, IntegrityError
 from sqlalchemy.orm import Session
 
+from book_cache import get_books, invalidate_books
 from database import Base, engine, get_db
 from models import Author, Book
 from schemas import AuthorInput, AuthorOutput, BookInput, BookOutput
@@ -20,7 +21,6 @@ logger = logging.getLogger("uvicorn.error")
 async def lifespan(app: FastAPI):
     for attempt in range(30):
         try:
-            # Serialize initial schema creation during overlapping deployments.
             with engine.begin() as connection:
                 connection.execute(text("SELECT pg_advisory_xact_lock(15001)"))
                 Base.metadata.create_all(connection)
@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     engine.dispose()
 
 
-app = FastAPI(title="Library API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Library API", version="2.0.0", lifespan=lifespan)
 
 
 @app.get("/", tags=["service"])
@@ -108,13 +108,24 @@ def create_book(data: BookInput, db: Session = Depends(get_db)):
     except IntegrityError:
         db.rollback()
         raise HTTPException(409, "Author was removed; choose another author") from None
+    invalidate_books()
     db.refresh(book)
     return book
 
 
 @app.get("/books", response_model=list[BookOutput], tags=["books"])
-def list_books(limit: int = Query(100, ge=1, le=1000), db: Session = Depends(get_db)):
-    return db.scalars(select(Book).order_by(Book.id).limit(limit)).all()
+def list_books(
+    response: Response,
+    limit: int = Query(100, ge=1, le=1000),
+    db: Session = Depends(get_db),
+):
+    def load():
+        books = db.scalars(select(Book).order_by(Book.id).limit(limit))
+        return tuple(BookOutput.model_validate(book) for book in books)
+
+    books, cache_result = get_books(limit, load)
+    response.headers["X-Books-Cache"] = cache_result
+    return books
 
 
 @app.get("/books/{book_id}", response_model=BookOutput, tags=["books"])
@@ -133,6 +144,7 @@ def update_book(book_id: int, data: BookInput, db: Session = Depends(get_db)):
     except IntegrityError:
         db.rollback()
         raise HTTPException(409, "Author was removed; choose another author") from None
+    invalidate_books()
     db.refresh(book)
     return book
 
@@ -141,4 +153,5 @@ def update_book(book_id: int, data: BookInput, db: Session = Depends(get_db)):
 def delete_book(book_id: int, db: Session = Depends(get_db)):
     db.delete(find_or_404(db, Book, book_id))
     db.commit()
+    invalidate_books()
     return Response(status_code=204)

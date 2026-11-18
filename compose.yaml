@@ -24,6 +24,7 @@ services:
       DB_USER: library
       DB_PASSWORD: ${DB_PASSWORD:?Create .env in the project root}
       DB_SSLMODE: disable
+      BOOKS_CACHE_ENABLED: ${BOOKS_CACHE_ENABLED:-false}
     ports:
       - "127.0.0.1:8000:8000"
     depends_on:

@@ -26,7 +26,7 @@ resource "aws_iam_role_policy" "ssm" {
     Statement = [{
       Effect   = "Allow"
       Action   = ["ssm:GetParameters"]
-      Resource = aws_ssm_parameter.db_password.arn
+      Resource = [aws_ssm_parameter.db_password.arn, aws_ssm_parameter.redis_password.arn]
     }]
   })
 }

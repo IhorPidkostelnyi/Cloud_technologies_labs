@@ -36,9 +36,14 @@ resource "aws_ecs_task_definition" "app" {
       { name = "DB_NAME", value = aws_db_instance.main.db_name },
       { name = "DB_USER", value = "libraryadmin" },
       { name = "DB_SSLMODE", value = "require" },
-      { name = "BOOKS_CACHE_ENABLED", value = tostring(var.books_cache_enabled) }
+      { name = "BOOKS_CACHE_ENABLED", value = tostring(var.books_cache_enabled) },
+      { name = "REDIS_HOST", value = aws_elasticache_replication_group.redis.primary_endpoint_address },
+      { name = "REDIS_TLS", value = "true" }
     ]
-    secrets = [{ name = "DB_PASSWORD", valueFrom = aws_ssm_parameter.db_password.arn }]
+    secrets = [
+      { name = "DB_PASSWORD", valueFrom = aws_ssm_parameter.db_password.arn },
+      { name = "REDIS_PASSWORD", valueFrom = aws_ssm_parameter.redis_password.arn }
+    ]
     logConfiguration = {
       logDriver = "awslogs"
       options = {
@@ -48,6 +53,10 @@ resource "aws_ecs_task_definition" "app" {
       }
     }
   }])
+  lifecycle {
+    create_before_destroy = true
+  }
+
   depends_on = [docker_registry_image.initial]
 }
 
@@ -60,8 +69,8 @@ resource "aws_ecs_service" "app" {
   platform_version                   = "1.4.0"
   wait_for_steady_state              = true
   health_check_grace_period_seconds  = 180
-  deployment_minimum_healthy_percent = 0
-  deployment_maximum_percent         = 100
+  deployment_minimum_healthy_percent = 100
+  deployment_maximum_percent         = 150
 
   deployment_circuit_breaker {
     enable   = true
@@ -88,6 +97,8 @@ resource "aws_ecs_service" "app" {
     aws_vpc_security_group_ingress_rule.app_from_alb,
     aws_vpc_security_group_ingress_rule.db_from_app,
     aws_vpc_security_group_egress_rule.app_to_db,
+    aws_vpc_security_group_egress_rule.app_to_redis,
+    aws_vpc_security_group_ingress_rule.redis_from_app,
     aws_vpc_security_group_egress_rule.app_https,
     aws_vpc_security_group_egress_rule.alb_to_app,
     aws_vpc_security_group_ingress_rule.http

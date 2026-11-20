@@ -1,5 +1,6 @@
 param(
-    [ValidateRange(1, 60)][int]$TimeoutMinutes = 25
+    [ValidateRange(1, 60)][int]$TimeoutMinutes = 25,
+    [ValidateRange(1, 3)][int]$Tasks = 1
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,9 +25,9 @@ do {
     $desired, $running, $pending = $counts
     $time = (Get-Date).ToUniversalTime().ToString('o')
     Write-Output "$time desired=$desired running=$running pending=$pending"
-    if ($desired -eq 1 -and $running -eq 1 -and $pending -eq 0) { return }
+    if ($desired -eq $Tasks -and $running -eq $Tasks -and $pending -eq 0) { return }
     Invoke-WebRequest -UseBasicParsing -Uri "$url/" -TimeoutSec 5 -ErrorAction SilentlyContinue | Out-Null
     Start-Sleep -Seconds 20
 } while ((Get-Date) -lt $deadline)
 
-throw 'ECS did not return to one task before the timeout'
+throw "ECS did not reach $Tasks running tasks before the timeout"

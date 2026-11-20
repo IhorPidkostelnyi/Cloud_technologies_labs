@@ -1,0 +1,18 @@
+{
+  "mode": "off",
+  "vus": 8,
+  "profile": "3m/5m/2m",
+  "observation_s": 240,
+  "elapsed_s": 599.52,
+  "requests": 29220,
+  "requests_per_second": 48.738991192954366,
+  "error_percent": 0,
+  "p50_ms": 44.865,
+  "p95_ms": 240.75956999999974,
+  "p99_ms": 458.25807000000174,
+  "books_list_p95_ms": 231.59576999999987,
+  "books_list_requests": 14610,
+  "books_list_selects_inferred": 14610,
+  "books_list_selects_inferred_per_second": 24.369495596477183,
+  "books_list_hit_percent": 0
+}

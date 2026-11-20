@@ -1,16 +1,27 @@
 import logging
 import os
 import time
+from datetime import UTC, datetime
+from typing import Annotated
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Response
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response
 from sqlalchemy import select, text
 from sqlalchemy.exc import OperationalError, SQLAlchemyError, IntegrityError
 from sqlalchemy.orm import Session
 
 from book_cache import get_books, invalidate_books
+from book_idempotency import (
+    REPLAY_TTL,
+    Replay,
+    cache_replay,
+    get_cached_replay,
+    lock_book_request,
+    replay_book,
+    request_fingerprint,
+)
 from database import Base, engine, get_db
-from models import Author, Book
+from models import Author, Book, BookRequest
 from schemas import AuthorInput, AuthorOutput, BookInput, BookOutput
 
 WELCOME_MESSAGE = "Library API v1"
@@ -99,31 +110,81 @@ def delete_author(author_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/books", response_model=BookOutput, status_code=201, tags=["books"])
-def create_book(data: BookInput, db: Session = Depends(get_db)):
+def create_book(
+    data: BookInput,
+    idempotency_key: Annotated[
+        str | None, Header(min_length=1, max_length=128, pattern=r"^[!-~]+$")
+    ] = None,
+    db: Session = Depends(get_db),
+):
+    if idempotency_key is None:
+        return insert_book(db, data)
+
+    fingerprint = request_fingerprint(data)
+    replay = get_cached_replay(idempotency_key)
+    if replay is not None:
+        return replay_book(replay, fingerprint)
+
+    request = lock_book_request(db, idempotency_key)
+    now = datetime.now(UTC)
+    if request is not None and request.expires_at > now:
+        replay = Replay(fingerprint=request.fingerprint, book=request.response)
+        result = replay_book(replay, fingerprint)
+        expiry = request.expires_at
+        db.commit()
+        cache_replay(idempotency_key, replay, expiry)
+        return result
+
+    return insert_book(db, data, idempotency_key, request, fingerprint)
+
+
+def insert_book(
+    db: Session,
+    data: BookInput,
+    key: str | None = None,
+    request: BookRequest | None = None,
+    fingerprint: str = "",
+) -> BookOutput:
     find_or_404(db, Author, data.author_id)
     book = Book(**data.model_dump())
     db.add(book)
     try:
+        db.flush()
+        result = BookOutput.model_validate(book)
+        if key is not None:
+            expiry = datetime.now(UTC) + REPLAY_TTL
+            if request is None:
+                request = BookRequest(key=key)
+                db.add(request)
+            request.fingerprint = fingerprint
+            request.response = result.model_dump(mode="json")
+            request.expires_at = expiry
         db.commit()
     except IntegrityError:
         db.rollback()
         raise HTTPException(409, "Author was removed; choose another author") from None
+
     invalidate_books()
-    db.refresh(book)
-    return book
+    if key is not None:
+        cache_replay(key, Replay(fingerprint=fingerprint, book=result), expiry)
+    return result
 
 
 @app.get("/books", response_model=list[BookOutput], tags=["books"])
 def list_books(
     response: Response,
     limit: int = Query(100, ge=1, le=1000),
+    author_id: int | None = Query(None, gt=0),
     db: Session = Depends(get_db),
 ):
     def load():
-        books = db.scalars(select(Book).order_by(Book.id).limit(limit))
+        query = select(Book)
+        if author_id is not None:
+            query = query.where(Book.author_id == author_id)
+        books = db.scalars(query.order_by(Book.id).limit(limit))
         return tuple(BookOutput.model_validate(book) for book in books)
 
-    books, cache_result = get_books(limit, load)
+    books, cache_result = get_books(limit, author_id, load)
     response.headers["X-Books-Cache"] = cache_result
     return books
 

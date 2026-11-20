@@ -1,10 +1,7 @@
-# Library API
-
-Лабораторна робота № 2. Масштабування, моніторинг і кешування API в AWS.
 
 ```text
 CloudLab-Ihor/
-├── app/                  FastAPI та кеш
+├── app/                  FastAPI, Redis і PostgreSQL
 ├── bootstrap/            Бюджет AWS
 ├── infra/                Terraform
 ├── loadtest/             Сценарій k6
@@ -12,25 +9,32 @@ CloudLab-Ihor/
 │   ├── ALERTS.md
 │   ├── AUTOSCALING.md
 │   ├── CACHE.md
+│   ├── IDEMPOTENCY.md
 │   ├── LOADTEST.md
+│   ├── SCHEDULE.md
 │   ├── public/
-│   │   ├── no_cache/     Скриншоти першого прогону
-│   │   ├── cache/        Скриншоти другого прогону
-│   │   └── local/        Локальна перевірка
-│   └── evidence/         Результати k6 у JSON
+│   │   ├── redis-off/   Фінальний прогін із вимкненим кешем
+│   │   ├── redis-on/    Фінальний прогін зі спільним Redis
+│   │   ├── aws/         Деплой, сповіщення та розклад
+│   │   └── local/       Локальні перевірки
+│   └── evidence/        Вимірювання k6, CloudWatch і RDS
 └── compose.yaml
 ```
 
-## Запуск
 
-У локальному `.env` задайте `DB_PASSWORD`.
+## AWS
+
 
 ```powershell
-docker compose up --build -d
-Invoke-RestMethod http://127.0.0.1:8000/health
+terraform -chdir=infra init
+terraform -chdir=infra plan
+terraform -chdir=infra apply
+$Url = terraform -chdir=infra output -raw app_url
+Invoke-RestMethod "$Url/health"
 ```
 
-[Локальний Swagger](http://127.0.0.1:8000/docs). Адреса AWS доступна через `terraform -chdir=infra output -raw app_url`.
+У листі від Amazon SNS підтвердьте підписку на тему `cloud-lab1-ihor-load-alerts`.
+
 
 ## Лабораторна № 2
 
@@ -38,3 +42,5 @@ Invoke-RestMethod http://127.0.0.1:8000/health
 - [Сповіщення CloudWatch та листи SNS](docs/ALERTS.md)
 - [Сценарій і результати k6](docs/LOADTEST.md)
 - [Порівняння кешу](docs/CACHE.md)
+- [Ідемпотентність створення книги](docs/IDEMPOTENCY.md)
+- [Денний і нічний розклад ECS](docs/SCHEDULE.md)

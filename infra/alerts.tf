@@ -9,7 +9,8 @@ resource "aws_sns_topic_subscription" "load_email" {
 }
 
 locals {
-  load_alarm_name = "${var.project_name}-maximum-tasks"
+  load_alarm_name = "${var.project_name}-cpu-high"
+  load_cpu_limit  = 70
 }
 
 resource "aws_sns_topic_policy" "load" {
@@ -34,15 +35,16 @@ resource "aws_sns_topic_policy" "load" {
   })
 }
 
-resource "aws_cloudwatch_metric_alarm" "maximum_tasks" {
+resource "aws_cloudwatch_metric_alarm" "cpu_high" {
   alarm_name          = local.load_alarm_name
-  alarm_description   = "The ECS service reached its maximum running task count."
-  namespace           = "ECS/ContainerInsights"
-  metric_name         = "RunningTaskCount"
-  statistic           = "Maximum"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  threshold           = local.maximum_tasks
-  evaluation_periods  = 1
+  alarm_description   = "ECS service average CPU exceeded 70 percent for two minutes."
+  namespace           = "AWS/ECS"
+  metric_name         = "CPUUtilization"
+  statistic           = "Average"
+  comparison_operator = "GreaterThanThreshold"
+  threshold           = local.load_cpu_limit
+  evaluation_periods  = 2
+  datapoints_to_alarm = 2
   period              = 60
   treat_missing_data  = "missing"
 

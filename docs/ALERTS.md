@@ -1,51 +1,35 @@
 # Сповіщення
 
-## Правило CloudWatch
-
 | Параметр | Значення |
-|---|---|
-| Правило | `cloud-lab1-ihor-maximum-tasks` |
-| Метрика ECS/ContainerInsights | `RunningTaskCount` |
-| Статистика | Максимум за 60 секунд |
-| ALARM | 3 або більше запущених задач |
-| OK | Менше ніж 3 задачі |
-| Пошта | Обидва переходи через SNS `cloud-lab1-ihor-load-alerts` |
+| --- | --- |
+| Алерт | `cloud-lab1-ihor-cpu-high` |
+| Метрика | Середній `CPUUtilization` сервісу ECS за 1 хв |
+| Умова | CPU вище 70% дві хвилини поспіль |
+| SNS | `cloud-lab1-ihor-load-alerts`, листи при `ALARM` та `OK` |
 
-Три задачі — верхня межа масштабування сервісу. У Terraform переходи ALARM і OK задано через `alarm_actions` і `ok_actions`.
+Ціль масштабування нижча за поріг алерта, тому ECS може почати реагувати раніше. Два виміри поспіль відсікають короткі піки.
 
-## Спрацювання
+## Фінальні прогони
 
-18.11.2026, київський час (UTC+2).
+| Подія (UTC) | Без кешу | З Redis |
+| --- | ---: | ---: |
+| `ALARM` | 20:26:44 | 21:03:44 |
+| `OK` | 20:29:44 | 21:07:44 |
+| Кінець HTTP-навантаження | 20:29:51 | 21:07:39 |
+| Від початку сталої фази до `ALARM` | 3 хв 53 с | 3 хв 5 с |
+| Доставлено за метрикою SNS | 2 | 2 |
 
-| Подія | Без кешу | З кешем |
-|---|---|---|
-| Початок сталої фази | 01:02:55 | 02:01:59 |
-| Стан ALARM | 01:10:56 | 02:11:56 |
-| Лист ALARM | 01:10 | 02:11 |
-| Стан OK | 01:32:56 | 02:31:56 |
-| Лист OK | 01:32 | 02:31 |
-| Затримка ALARM | ≈8 хв | ≈9 хв 57 с |
+Обидва `ALARM` спрацювали під навантаженням. У прогоні з Redis стан `OK` повернувся через 5 с після останніх запитів, поки k6 ще спостерігав за сервісом.
 
-Затримку пораховано від початку сталої фази до зміни стану в CloudWatch. Пошта показує час до хвилини. Для сигналу про досягнення межі у три задачі затримка прийнятна. Для швидкого виявлення повільних відповідей варто відстежувати p95 окремо.
+![Історія алерта в CloudWatch](public/aws/cpu-alert-history.png)
 
-## Скриншоти
+[Метрики SNS без кешу](evidence/cloudwatch-redis-off.json) · [Метрики SNS з Redis](evidence/cloudwatch-redis-on.json)
 
-### Без кешу
+## Листи з попереднього тесту
 
-![Повний цикл Alarm без кешу](public/no_cache/alarm_console.png)
+| Прогін 18.11.2026 | CloudWatch | ALARM | OK |
+| --- | --- | --- | --- |
+| Без кешу | [Графік](public/no_cache/alarm_console.png) | [Лист](public/no_cache/alarm_msg.png) | [Лист](public/no_cache/ok_msg.png) |
+| З процесним кешем | [Графік](public/cache/alarm_console.png) | [Лист](public/cache/alarm_msg.png) | [Лист](public/cache/ok_msg.png) |
 
-![Лист ALARM без кешу](public/no_cache/alarm_msg.png)
-
-![Лист OK без кешу](public/no_cache/ok_msg.png)
-
-### З кешем
-
-![Повний цикл Alarm з кешем](public/cache/alarm_console.png)
-
-![Лист ALARM з кешем](public/cache/alarm_msg.png)
-
-![Лист OK з кешем](public/cache/ok_msg.png)
-
-### Історія
-
-![Переходи ALARM і OK для двох прогонів](public/alarm_history.png)
+[Історія попереднього алерта](public/alarm_history.png)

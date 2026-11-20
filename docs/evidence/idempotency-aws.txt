@@ -1,0 +1,5 @@
+POST 1: HTTP 201  {"title":"Replay fad0e1d087704515a07f7fffee688332","year":2026,"author_id":9,"id":19603}
+POST 2: HTTP 201  {"title":"Replay fad0e1d087704515a07f7fffee688332","year":2026,"author_id":9,"id":19603}
+GET books for author 9: 1 row, book id=19603
+PASS: two equal responses; one stored book
+

@@ -30,6 +30,12 @@ resource "aws_cloudwatch_dashboard" "lab2" {
           stat    = "Average"
           yAxis   = { left = { min = 0, max = 100, label = "%", showUnits = false } }
           metrics = [concat(["AWS/ECS", "CPUUtilization"], local.service_dimensions)]
+          annotations = {
+            horizontal = [
+              { label = "Target Tracking", value = var.scaling_cpu_target },
+              { label = "SNS alarm threshold", value = local.load_cpu_limit }
+            ]
+          }
         })
       },
       {
@@ -42,7 +48,6 @@ resource "aws_cloudwatch_dashboard" "lab2" {
             concat(["AWS/ApplicationELB", "RequestCount"], local.alb_dimensions, [{ label = "All targets" }]),
             concat(["AWS/ApplicationELB", "RequestCountPerTarget"], local.targets_dimensions, [{ label = "Per healthy target" }])
           ]
-          annotations = { horizontal = [{ label = "Scaling target (per task)", value = var.requests_per_target }] }
         })
       },
       {
@@ -67,6 +72,24 @@ resource "aws_cloudwatch_dashboard" "lab2" {
             concat(["AWS/ApplicationELB", "HTTPCode_Target_5XX_Count"], local.alb_dimensions, [{ label = "From ECS" }]),
             concat(["AWS/ApplicationELB", "HTTPCode_ELB_5XX_Count"], local.alb_dimensions, [{ label = "From ALB" }])
           ]
+        })
+      },
+      {
+        type = "metric", x = 0, y = 18, width = 12, height = 6
+        properties = merge(local.widget_defaults, {
+          title   = "PostgreSQL RDS CPU (%)"
+          stat    = "Average"
+          yAxis   = { left = { min = 0, max = 100 } }
+          metrics = [["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", aws_db_instance.main.identifier]]
+        })
+      },
+      {
+        type = "metric", x = 12, y = 18, width = 12, height = 6
+        properties = merge(local.widget_defaults, {
+          title   = "PostgreSQL RDS ReadIOPS"
+          stat    = "Average"
+          yAxis   = { left = { min = 0 } }
+          metrics = [["AWS/RDS", "ReadIOPS", "DBInstanceIdentifier", aws_db_instance.main.identifier]]
         })
       }
     ]

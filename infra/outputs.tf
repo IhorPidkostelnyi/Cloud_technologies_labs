@@ -36,7 +36,7 @@ output "dashboard_name" {
   value = aws_cloudwatch_dashboard.lab2.dashboard_name
 }
 output "load_alarm_name" {
-  value = aws_cloudwatch_metric_alarm.maximum_tasks.alarm_name
+  value = aws_cloudwatch_metric_alarm.cpu_high.alarm_name
 }
 output "load_sns_topic_arn" {
   value = aws_sns_topic.load.arn

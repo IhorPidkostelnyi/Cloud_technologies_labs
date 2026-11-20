@@ -1,0 +1,9 @@
+{
+  "name": "cloud-lab1-ihor-redis",
+  "status": "available",
+  "engine": "redis",
+  "engine_version": "7.1.0",
+  "node_type": "cache.t4g.micro",
+  "encrypted_in_transit": true,
+  "encrypted_at_rest": true
+}

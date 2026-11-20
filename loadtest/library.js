@@ -6,7 +6,9 @@ import exec from 'k6/execution';
 const baseUrl = (__ENV.BASE_URL || 'http://127.0.0.1:8000').replace(/\/$/, '');
 const vus = Number(__ENV.VUS || 8);
 const expectedCache = __ENV.EXPECT_CACHE || 'off';
-const smoke = __ENV.SMOKE === '1';
+const profile = __ENV.PROFILE || (__ENV.SMOKE === '1' ? 'smoke' : 'load');
+const smoke = profile === 'smoke';
+const probe = profile === 'probe';
 const summaryPath = __ENV.SUMMARY_PATH || 'loadtest/results/summary.json';
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
@@ -25,12 +27,18 @@ const listRequests = new Counter('books_list_requests');
 const listLatency = new Trend('books_list_latency', true);
 const listSelects = new Counter('books_list_selects');
 const listHits = new Rate('books_list_hit_rate');
+const rampUp = probe ? 1 : 3;
+const hold = probe ? 2 : 5;
+const rampDown = probe ? 1 : 2;
+const observe = smoke || probe ? 0 : 4;
+const rampStages = probe
+  ? [{ duration: '1m', target: vus }]
+  : [{ duration: '1m', target: Math.ceil(vus * 0.85) }, { duration: '2m', target: vus }];
 const stages = [
-  { duration: '3m', target: vus },
-  { duration: '5m', target: vus },
-  { duration: '2m', target: 0 },
+  ...rampStages,
+  { duration: `${hold}m`, target: vus },
+  { duration: `${rampDown}m`, target: 0 },
 ];
-
 export const options = {
   scenarios: {
     library: smoke
@@ -42,6 +50,17 @@ export const options = {
           gracefulRampDown: '10s',
           gracefulStop: '10s',
         },
+    ...(observe > 0 && {
+      observation: {
+        executor: 'shared-iterations',
+        exec: 'observeService',
+        startTime: `${rampUp + hold + rampDown}m`,
+        vus: 1,
+        iterations: 1,
+        maxDuration: `${observe * 60 + 5}s`,
+        gracefulStop: '0s',
+      },
+    }),
   },
   setupTimeout: '4m',
   summaryTrendStats: ['p(50)', 'p(95)', 'p(99)', 'max'],
@@ -80,10 +99,16 @@ function matchesCache(header) {
 }
 
 export function setup() {
-  const health = requireStatus(get('/health', '/health', true), 200, '/health');
+  const sentAt = Date.now();
+  const healthResponse = get('/health', '/health', true);
+  const receivedAt = Date.now();
+  const health = requireStatus(healthResponse, 200, '/health');
   if (health.database !== 'connected') {
     fail('Database is not connected');
   }
+  const serverDate = Date.parse(healthResponse.headers.Date);
+  const offset = Math.round((serverDate - (sentAt + receivedAt) / 2) / 1000);
+  const clockOffset = Number.isFinite(offset) && Math.abs(offset) >= 5 ? offset : 0;
 
   const page = get('/books?limit=100', '/books', true);
   const books = requireStatus(page, 200, 'initial GET /books');
@@ -100,7 +125,7 @@ export function setup() {
   for (let number = books.length + 3; number < 100; number += 1) {
     seedBook(number + 1);
   }
-  return { authorId: author.id, bookIds, run };
+  return { authorId: author.id, bookIds, run, clockOffset };
 }
 
 function record(response, expectedStatus, booksList = false) {
@@ -129,10 +154,15 @@ function record(response, expectedStatus, booksList = false) {
 export default function (data) {
   const scenarioStart = exec.scenario.startTime;
   if (exec.scenario.iterationInTest === 0) {
-    console.log(`START_UTC=${new Date(scenarioStart).toISOString()}`);
+    const startUtc = scenarioStart + data.clockOffset * 1000;
+    console.log(`CLOCK_OFFSET_SECONDS=${data.clockOffset}`);
+    console.log(`START_UTC=${new Date(startUtc).toISOString()}`);
     if (!smoke) {
-      console.log(`STEADY_UTC=${new Date(scenarioStart + 180000).toISOString()}`);
-      console.log(`RAMP_DOWN_UTC=${new Date(scenarioStart + 480000).toISOString()}`);
+      const at = (minutes) => new Date(startUtc + minutes * 60000).toISOString();
+      console.log(`STEADY_UTC=${at(rampUp)}`);
+      console.log(`RAMP_DOWN_UTC=${at(rampUp + hold)}`);
+      console.log(`LOAD_END_UTC=${at(rampUp + hold + rampDown)}`);
+      console.log(`OBSERVATION_END_UTC=${at(rampUp + hold + rampDown + observe)}`);
     }
   }
 
@@ -154,6 +184,12 @@ export default function (data) {
   sleep(0.5);
 }
 
+export function observeService(data) {
+  sleep(observe * 60);
+  const completed = Date.now() + data.clockOffset * 1000;
+  console.log(`OBSERVATION_COMPLETED_UTC=${new Date(completed).toISOString()}`);
+}
+
 export function handleSummary(data) {
   const values = (name) => data.metrics[name]?.values || {};
   const pct = (value) => value == null ? null : value * 100;
@@ -164,7 +200,8 @@ export function handleSummary(data) {
   const report = {
     mode: expectedCache,
     vus: smoke ? 1 : vus,
-    profile: smoke ? 'smoke' : '3m/5m/2m',
+    profile: smoke ? 'smoke' : `${rampUp}m/${hold}m/${rampDown}m`,
+    observation_s: observe * 60,
     elapsed_s: seconds,
     requests: count,
     requests_per_second: seconds > 0 ? count / seconds : null,
@@ -174,8 +211,8 @@ export function handleSummary(data) {
     p99_ms: time['p(99)'] ?? null,
     books_list_p95_ms: values('books_list_latency')['p(95)'] ?? null,
     books_list_requests: values('books_list_requests').count ?? 0,
-    books_list_sql_selects: selects,
-    books_list_sql_selects_per_second: seconds > 0 ? selects / seconds : null,
+    books_list_selects_inferred: selects,
+    books_list_selects_inferred_per_second: seconds > 0 ? selects / seconds : null,
     books_list_hit_percent: pct(values('books_list_hit_rate').rate),
   };
   const reportText = JSON.stringify(report, null, 2) + '\n';

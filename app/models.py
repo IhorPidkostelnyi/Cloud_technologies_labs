@@ -1,4 +1,7 @@
-from sqlalchemy import ForeignKey, String
+from datetime import datetime
+
+from sqlalchemy import DateTime, ForeignKey, String
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from database import Base
@@ -18,3 +21,12 @@ class Book(Base):
     title: Mapped[str] = mapped_column(String(300))
     year: Mapped[int | None]
     author_id: Mapped[int] = mapped_column(ForeignKey("authors.id"))
+
+
+class BookRequest(Base):
+    __tablename__ = "book_requests"
+
+    key: Mapped[str] = mapped_column(String(128), primary_key=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    response: Mapped[dict] = mapped_column(JSONB)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

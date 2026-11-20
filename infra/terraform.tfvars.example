@@ -5,6 +5,7 @@ github_owner_id       = "182145211"
 github_repository_id  = "1424722125"
 enable_github_actions = false
 
-requests_per_target   = 300
-books_cache_enabled   = false
-alerts_email          = "student@example.com"
+scaling_cpu_target       = 60
+enable_scheduled_scaling = false
+books_cache_enabled      = false
+alerts_email             = "student@example.com"

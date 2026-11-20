@@ -1,0 +1,112 @@
+{
+  "rds": "cloud-lab1-ihor-db",
+  "source": "AWS/RDS",
+  "start_inclusive_utc": "2026-11-19T20:20:00Z",
+  "end_exclusive_utc": "2026-11-19T20:29:00Z",
+  "expected_minutes": 9,
+  "metrics": {
+    "CPUUtilization": {
+      "mean": 9.354,
+      "peak_one_minute_average": 12.192,
+      "points": [
+        {
+          "Timestamp": "2026-11-19T22:20:00+02:00",
+          "Average": 5.558425973766229,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:21:00+02:00",
+          "Average": 9.028875759340933,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:22:00+02:00",
+          "Average": 9.740205635821292,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:23:00+02:00",
+          "Average": 9.920701029553861,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:24:00+02:00",
+          "Average": 11.080494321977287,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:25:00+02:00",
+          "Average": 10.833333333333334,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:26:00+02:00",
+          "Average": 12.191673735508873,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:27:00+02:00",
+          "Average": 7.949630074987057,
+          "Unit": "Percent"
+        },
+        {
+          "Timestamp": "2026-11-19T22:28:00+02:00",
+          "Average": 7.884231536926147,
+          "Unit": "Percent"
+        }
+      ]
+    },
+    "ReadIOPS": {
+      "mean": 0.361,
+      "peak_one_minute_average": 1.918,
+      "points": [
+        {
+          "Timestamp": "2026-11-19T22:20:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:21:00+02:00",
+          "Average": 1.316337582271099,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:22:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:23:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:24:00+02:00",
+          "Average": 0.01666305633779348,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:25:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:26:00+02:00",
+          "Average": 1.9183932205651753,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:27:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        },
+        {
+          "Timestamp": "2026-11-19T22:28:00+02:00",
+          "Average": 0.0,
+          "Unit": "Count/Second"
+        }
+      ]
+    }
+  }
+}
+

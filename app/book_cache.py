@@ -1,40 +1,52 @@
-from collections import OrderedDict
 from collections.abc import Callable
 from os import getenv
-from threading import Lock
-from time import monotonic
+from uuid import uuid4
 
+from pydantic import TypeAdapter
+from redis.exceptions import RedisError
+
+from redis_connection import client
 from schemas import BookOutput
 
 CACHE_ENABLED = getenv("BOOKS_CACHE_ENABLED", "false").lower() == "true"
 TTL_SECONDS = 45
-MAX_ENTRIES = 16
-_entries: OrderedDict[int, tuple[float, tuple[BookOutput, ...]]] = OrderedDict()
-_lock = Lock()
+GENERATION_KEY = "library:books:generation"
+books_json = TypeAdapter(tuple[BookOutput, ...])
 
 
 def get_books(
-    limit: int, load: Callable[[], tuple[BookOutput, ...]]
+    limit: int, author_id: int | None, load: Callable[[], tuple[BookOutput, ...]]
 ) -> tuple[tuple[BookOutput, ...], str]:
-    if not CACHE_ENABLED:
+    if not CACHE_ENABLED or client is None:
         return load(), "BYPASS"
 
-    with _lock:
-        now = monotonic()
-        entry = _entries.get(limit)
-        if entry is not None and entry[0] > now:
-            _entries.move_to_end(limit)
-            return entry[1], "HIT"
+    try:
+        generation = client.get(GENERATION_KEY)
+        if generation is None:
+            client.set(GENERATION_KEY, uuid4().hex, nx=True)
+            generation = client.get(GENERATION_KEY)
+        if generation is None:
+            return load(), "BYPASS"
 
-        books = load()
-        _entries[limit] = (now + TTL_SECONDS, books)
-        _entries.move_to_end(limit)
-        if len(_entries) > MAX_ENTRIES:
-            _entries.popitem(last=False)
-        return books, "MISS"
+        key = f"library:books:{generation}:{author_id}:{limit}"
+        cached = client.get(key)
+    except RedisError:
+        return load(), "BYPASS"
+
+    if cached is not None:
+        return books_json.validate_json(cached), "HIT"
+
+    books = load()
+    try:
+        client.set(key, books_json.dump_json(books), ex=TTL_SECONDS)
+    except RedisError:
+        return books, "BYPASS"
+    return books, "MISS"
 
 
 def invalidate_books():
-    if CACHE_ENABLED:
-        with _lock:
-            _entries.clear()
+    if client is not None:
+        try:
+            client.set(GENERATION_KEY, uuid4().hex)
+        except RedisError:
+            pass

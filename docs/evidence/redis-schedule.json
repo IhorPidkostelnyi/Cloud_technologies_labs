@@ -1,0 +1,133 @@
+{
+  "demo": {
+    "night_utc": "2026-11-19T21:43:00+00:00",
+    "night_cron": "cron(43 23 * * ? *)",
+    "day_utc": "2026-11-19T21:38:00+00:00",
+    "day_cron": "cron(38 23 * * ? *)"
+  },
+  "day_observed": {
+    "max": 3,
+    "desired": 2,
+    "min": 2,
+    "pending": 0,
+    "time_utc": "2026-11-19T21:38:44.6748171+00:00",
+    "running": 2
+  },
+  "night_bound_observed": {
+    "max": 3,
+    "desired": 2,
+    "min": 1,
+    "pending": 0,
+    "time_utc": "2026-11-19T21:43:44.2516037+00:00",
+    "running": 2
+  },
+  "night_at_one_task": {
+    "max": 3,
+    "desired": 1,
+    "min": 1,
+    "pending": 0,
+    "time_utc": "2026-11-19T21:44:19.7446059+00:00",
+    "running": 1
+  },
+  "observations": [
+    {
+      "max": 3,
+      "desired": 1,
+      "min": 1,
+      "pending": 0,
+      "time_utc": "2026-11-19T21:34:08.3535705+00:00",
+      "running": 1
+    },
+    {
+      "max": 3,
+      "desired": 2,
+      "min": 2,
+      "pending": 0,
+      "time_utc": "2026-11-19T21:38:08.2491010+00:00",
+      "running": 1
+    },
+    {
+      "max": 3,
+      "desired": 2,
+      "min": 2,
+      "pending": 1,
+      "time_utc": "2026-11-19T21:38:26.9420269+00:00",
+      "running": 1
+    },
+    {
+      "max": 3,
+      "desired": 2,
+      "min": 2,
+      "pending": 0,
+      "time_utc": "2026-11-19T21:38:44.6748171+00:00",
+      "running": 2
+    },
+    {
+      "max": 3,
+      "desired": 2,
+      "min": 1,
+      "pending": 0,
+      "time_utc": "2026-11-19T21:43:44.2516037+00:00",
+      "running": 2
+    },
+    {
+      "max": 3,
+      "desired": 1,
+      "min": 1,
+      "pending": 0,
+      "time_utc": "2026-11-19T21:44:19.7446059+00:00",
+      "running": 1
+    }
+  ],
+  "observation_source": "State changes recorded by the ECS and Application Auto Scaling polling script",
+  "regular_actions": [
+    {
+      "name": "cloud-lab1-ihor-day",
+      "schedule": "cron(0 7 * * ? *)",
+      "timezone": "Europe/Kyiv",
+      "capacity": {
+        "MinCapacity": 2,
+        "MaxCapacity": 3
+      }
+    },
+    {
+      "name": "cloud-lab1-ihor-night",
+      "schedule": "cron(0 23 * * ? *)",
+      "timezone": "Europe/Kyiv",
+      "capacity": {
+        "MinCapacity": 1,
+        "MaxCapacity": 3
+      }
+    }
+  ],
+  "scaling_activities": [
+    {
+      "start": "2026-11-19T23:44:09.593000+02:00",
+      "end": "2026-11-19T23:44:43.781000+02:00",
+      "status": "Successful",
+      "change": "Setting desired count to 1.",
+      "cause": "monitor alarm TargetTracking-service/cloud-lab1-ihor-cluster/cloud-lab1-ihor-service-AlarmLow-4d2de7d8-d354-4361-bb93-0dc25a75abb5 in state ALARM triggered policy cloud-lab1-ihor-cpu"
+    },
+    {
+      "start": "2026-11-19T23:43:31.583000+02:00",
+      "end": "2026-11-19T23:43:31.601000+02:00",
+      "status": "Successful",
+      "change": "Setting min capacity to 1 and max capacity to 3",
+      "cause": "scheduled action name cloud-lab1-ihor-night was triggered"
+    },
+    {
+      "start": "2026-11-19T23:38:04.765000+02:00",
+      "end": "2026-11-19T23:39:11.310000+02:00",
+      "status": "Successful",
+      "change": "Setting desired count to 2.",
+      "cause": "minimum capacity was set to 2"
+    },
+    {
+      "start": "2026-11-19T23:38:04.471000+02:00",
+      "end": "2026-11-19T23:38:04.485000+02:00",
+      "status": "Successful",
+      "change": "Setting min capacity to 2 and max capacity to 3",
+      "cause": "scheduled action name cloud-lab1-ihor-day was triggered"
+    }
+  ]
+}

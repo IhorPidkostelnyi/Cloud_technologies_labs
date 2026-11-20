@@ -24,14 +24,14 @@ variable "github_repository_id" {
   default = "1424722125"
 }
 
-variable "requests_per_target" {
+variable "scaling_cpu_target" {
   type        = number
-  default     = 300
-  description = "Target application requests per minute per healthy ECS task."
+  default     = 60
+  description = "Target average ECS CPU utilization in percent."
 
   validation {
-    condition     = var.requests_per_target > 0
-    error_message = "requests_per_target must be greater than zero."
+    condition     = var.scaling_cpu_target > 0 && var.scaling_cpu_target < 100
+    error_message = "scaling_cpu_target must be between 0 and 100 percent."
   }
 }
 

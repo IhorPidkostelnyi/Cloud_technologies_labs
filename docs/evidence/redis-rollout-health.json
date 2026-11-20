@@ -1,0 +1,1146 @@
+{
+  "apply_started_utc": "2026-11-19T20:50:56Z",
+  "rollout": {
+    "task_definition": "cloud-lab1-ihor-app:5",
+    "state": "COMPLETED",
+    "running": 2,
+    "pending": 0
+  },
+  "checks": 125,
+  "failures": 0,
+  "observations": [
+    {
+      "time_utc": "2026-11-19T20:50:55Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:38.5578835+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:50:57Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:40.8777267+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:50:59Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:42.9833611+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:02Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:45.0770888+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:04Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:47.1654551+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:06Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:49.2674649+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:08Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:51.3422521+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:10Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:53.4421028+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:12Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:55.5428323+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:16Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:47:59.2404021+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:18Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:01.3623732+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:20Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:03.5039463+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:22Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:05.5893862+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:24Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:07.6759651+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:26Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:09.7657445+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:29Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:12.8789435+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:32Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:15.0889314+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:34Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:17.1802195+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:36Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:19.2628488+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:38Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:21.336359+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:40Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:23.4199344+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:42Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:25.5057348+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:44Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:27.5787242+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:46Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:29.6635471+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:48Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:31.7455849+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:50Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:33.829059+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:52Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:35.9150331+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:55Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:38.0132087+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:57Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:40.0936323+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:51:59Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:42.1931543+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:01Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:44.3105785+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:03Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:46.4112392+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:05Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:48.4952705+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:07Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:50.5820825+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:09Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:52.6919233+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:11Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:54.7997461+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:13Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:56.8894988+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:16Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:48:59.003046+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:18Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:01.3385571+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:20Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:03.4178908+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:22Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:05.670879+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:24Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:07.7544903+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:26Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:09.8363999+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:28Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:11.914237+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:30Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:13.9974845+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:33Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:16.0710245+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:35Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:18.1895437+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:37Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:20.2683454+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:39Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:22.3547439+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:41Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:24.4382416+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:43Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:26.5380077+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:45Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:28.8769867+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:47Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:30.9586908+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:50Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:33.0424135+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:52Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:35.1135151+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:54Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:37.1951478+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:52:57Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:40.2772211+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:00Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:43.1743049+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:02Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:45.2470725+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:04Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:47.3320632+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:06Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:49.4013817+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:08Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:51.4941191+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:10Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:53.5747516+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:12Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:55.6626081+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:14Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:57.7364062+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:16Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:49:59.8214004+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:18Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:01.9014429+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:20Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:03.9884631+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:23Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:06.0694605+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:25Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:08.3901317+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:27Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:10.4731569+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:29Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:12.5551141+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:31Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:14.6389091+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:33Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:16.7268328+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:35Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:18.795459+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:37Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:20.8697095+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:39Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:22.9374577+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:42Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:25.0164578+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:44Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:27.109364+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:46Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:29.1907844+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:48Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:31.265954+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:50Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:33.3511122+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:52Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:35.4249098+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:54Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:37.4998542+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:56Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:39.5803948+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:53:59Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:42.1806597+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:01Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:44.3498436+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:03Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:46.4460648+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:05Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:48.5477583+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:07Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:50.7106613+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:09Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:52.8250551+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:11Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:54.9152449+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:14Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:57.0144762+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:16Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:50:59.1088589+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:18Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:01.2132587+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:20Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:03.3021669+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:22Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:05.3914452+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:24Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:07.4880218+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:26Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:09.5867025+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:28Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:11.6928778+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:30Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:13.8009211+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:33Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:16.1213078+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:35Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:18.2638278+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:37Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:20.3908122+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:39Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:22.4884474+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:41Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:24.5937318+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:43Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:26.7451529+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:45Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:28.8466831+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:47Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:30.9465228+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:50Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:33.0413778+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:52Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:35.1401166+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:54Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:37.2311179+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:56Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:39.325695+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:54:58Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:41.4745354+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:00Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:43.5774691+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:02Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:45.7010542+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:04Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:47.7912788+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:06Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:49.8707079+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:08Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:51.9574192+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:11Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:54.0281713+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:13Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:56.1094026+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:15Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:51:58.1954839+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:17Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:52:00.2783612+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:19Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:52:02.3456092+02:00"
+    },
+    {
+      "time_utc": "2026-11-19T20:55:22Z",
+      "http_status": 200,
+      "database": "connected",
+      "PSComputerName": "localhost",
+      "RunspaceId": "1b060c61-2013-4491-8caf-0d0467ecbb97",
+      "PSShowComputerName": false,
+      "client_time_utc": "2026-11-19T22:52:05.5092552+02:00"
+    }
+  ],
+  "rollout_at_end_of_health_checks": {
+    "task_definition": "cloud-lab1-ihor-app:5",
+    "state": "IN_PROGRESS",
+    "running": 2,
+    "pending": 0
+  },
+  "clock_offset_seconds": 197,
+  "client_apply_started_utc": "2026-11-19T22:47:39.2089041+02:00"
+}
